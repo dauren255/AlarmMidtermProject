@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.alarm_item_row.view.*
 
 class AlarmAdapter(
     var itemList: List<Alarm>,
-    private val onItemClick: (Alarm) -> Unit
+    private var onItemClick: (Alarm) -> Unit
 ) : RecyclerView.Adapter<AlarmAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class AlarmManager(
-    private val alarms: MutableList<Alarm>
+    private var alarms: MutableList<Alarm>
 ): Parcelable {
 
     fun add(alarm: Alarm){

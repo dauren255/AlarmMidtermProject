@@ -2,7 +2,6 @@ package com.example.alarm
 
 import android.app.TimePickerDialog
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -11,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alarm.model.Alarm
 import com.example.alarm.model.AlarmAdapter
-import com.example.alarm.model.AlarmManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
@@ -29,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         val currentDate = sdf.format(Date())
         alarms.add(Alarm(2, currentDate, "Foootbaaaaaalllll", false))
         alarms.add(Alarm(2, currentDate, "Foootbaaaaaalllll", false))
-
         setupViews()
     }
 
@@ -49,8 +46,7 @@ class MainActivity : AppCompatActivity() {
                 delete.setOnClickListener(View.OnClickListener { view ->
                     alarms.remove(it)
                     dialog.dismiss()
-                    finish()
-                    startActivity(getIntent())
+                    setupViews()
                 })
                 dialog.setContentView(view)
                 dialog.show()
@@ -82,8 +78,10 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
             addAlarm.setOnClickListener(View.OnClickListener { view ->
-//                alarms.add(Alarm(2, currentDate, "Foootbaaaaaalllll", false))
+                alarms.add(Alarm(2, newAlarmTime.text.toString(), newAlarmName.text.toString(), true))
                 dialog.dismiss()
+                setupViews()
+
             })
             dialog.setContentView(view)
             dialog.show()
